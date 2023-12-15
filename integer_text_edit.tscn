@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://cf7a8wnqmvk5f"]
+
+[ext_resource type="Script" path="res://IntegerTextEdit.gd" id="1_pq6wn"]
+
+[node name="IntegerTextEdit" type="TextEdit"]
+offset_right = 8.0
+offset_bottom = 8.0
+script = ExtResource("1_pq6wn")
+
+[connection signal="text_changed" from="." to="." method="_on_text_changed"]

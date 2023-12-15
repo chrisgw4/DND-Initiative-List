@@ -1,0 +1,129 @@
+[gd_scene load_steps=5 format=3 uid="uid://ds3o0dt4ebopq"]
+
+[ext_resource type="Script" path="res://Input.gd" id="1_81cph"]
+[ext_resource type="Script" path="res://UI.gd" id="1_mnb4n"]
+[ext_resource type="PackedScene" uid="uid://cf7a8wnqmvk5f" path="res://integer_text_edit.tscn" id="3_kvyuc"]
+[ext_resource type="Script" path="res://Output.gd" id="3_pif2o"]
+
+[node name="Scene" type="Node2D"]
+
+[node name="UI" type="CanvasLayer" parent="."]
+script = ExtResource("1_mnb4n")
+
+[node name="Input" type="Control" parent="UI"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_81cph")
+
+[node name="AddButton" type="Button" parent="UI/Input"]
+layout_mode = 0
+offset_left = 38.0
+offset_top = 15.0
+offset_right = 84.0
+offset_bottom = 47.0
+text = "Add"
+
+[node name="Name" type="TextEdit" parent="UI/Input"]
+layout_mode = 0
+offset_left = 93.0
+offset_top = 13.0
+offset_right = 168.0
+offset_bottom = 53.0
+placeholder_text = "Name"
+
+[node name="Initiative" parent="UI/Input" instance=ExtResource("3_kvyuc")]
+layout_mode = 0
+offset_left = 181.0
+offset_top = 13.0
+offset_right = 258.0
+offset_bottom = 53.0
+placeholder_text = "Initiative"
+
+[node name="Health" parent="UI/Input" instance=ExtResource("3_kvyuc")]
+layout_mode = 0
+offset_left = 273.0
+offset_top = 13.0
+offset_right = 348.0
+offset_bottom = 53.0
+placeholder_text = "Health"
+
+[node name="SortButton" type="Button" parent="UI/Input"]
+layout_mode = 0
+offset_left = 109.0
+offset_top = 59.0
+offset_right = 277.0
+offset_bottom = 90.0
+text = "Sort"
+
+[node name="Output" type="Control" parent="UI"]
+layout_mode = 3
+anchors_preset = 0
+offset_top = 111.0
+offset_right = 40.0
+offset_bottom = 151.0
+script = ExtResource("3_pif2o")
+
+[node name="ScrollContainer" type="ScrollContainer" parent="UI/Output"]
+layout_mode = 0
+offset_right = 400.0
+offset_bottom = 642.0
+
+[node name="CharacterHolder" type="VBoxContainer" parent="UI/Output/ScrollContainer"]
+layout_mode = 2
+
+[node name="DexterityInput" type="Control" parent="UI/Output"]
+visible = false
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 160.0
+offset_top = 2.0
+offset_right = 200.0
+offset_bottom = 42.0
+grow_horizontal = 2
+size_flags_horizontal = 4
+
+[node name="ColorRect" type="ColorRect" parent="UI/Output/DexterityInput"]
+layout_mode = 0
+offset_left = -155.0
+offset_top = -1.0
+offset_right = 197.0
+offset_bottom = 213.0
+color = Color(0.0470588, 0.0470588, 0.0470588, 0.768627)
+
+[node name="RichTextLabel" type="RichTextLabel" parent="UI/Output/DexterityInput"]
+layout_mode = 0
+offset_left = -143.0
+offset_top = 6.0
+offset_right = 184.0
+offset_bottom = 34.0
+text = "These two characters have same initiative"
+
+[node name="Button" type="Button" parent="UI/Output/DexterityInput"]
+layout_mode = 0
+offset_top = 158.0
+offset_right = 54.0
+offset_bottom = 189.0
+text = "Submit"
+
+[node name="Dex1" parent="UI/Output/DexterityInput" instance=ExtResource("3_kvyuc")]
+layout_mode = 0
+offset_left = -120.0
+offset_top = 105.0
+offset_right = 11.0
+offset_bottom = 138.0
+placeholder_text = "Enter Dexterity"
+
+[node name="Dex2" parent="UI/Output/DexterityInput" instance=ExtResource("3_kvyuc")]
+layout_mode = 0
+offset_left = 36.0
+offset_top = 105.0
+offset_right = 167.0
+offset_bottom = 138.0
+placeholder_text = "Enter Dexterity"
+
+[connection signal="pressed" from="UI/Input/AddButton" to="UI/Input" method="_on_add_button_pressed"]
+[connection signal="pressed" from="UI/Input/SortButton" to="UI/Output" method="_on_sort_button_pressed"]

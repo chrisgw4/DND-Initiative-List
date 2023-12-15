@@ -1,0 +1,52 @@
+[gd_scene load_steps=3 format=3 uid="uid://dhvlxedcox3dp"]
+
+[ext_resource type="Script" path="res://Character.gd" id="1_xnmam"]
+[ext_resource type="PackedScene" uid="uid://cf7a8wnqmvk5f" path="res://integer_text_edit.tscn" id="2_1fxga"]
+
+[node name="Character" type="Control"]
+custom_minimum_size = Vector2(400, 42)
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = -726.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_xnmam")
+
+[node name="Name" type="RichTextLabel" parent="."]
+layout_mode = 0
+offset_left = 70.0
+offset_right = 170.0
+offset_bottom = 40.0
+text = "Trol"
+
+[node name="Initiative" parent="." instance=ExtResource("2_1fxga")]
+layout_mode = 0
+offset_left = 200.0
+offset_right = 250.0
+offset_bottom = 40.0
+
+[node name="Health" parent="." instance=ExtResource("2_1fxga")]
+layout_mode = 0
+offset_left = 300.0
+offset_right = 350.0
+offset_bottom = 40.0
+
+[node name="Dex" type="RichTextLabel" parent="."]
+layout_mode = 0
+offset_left = 2.0
+offset_right = 42.0
+offset_bottom = 25.0
+text = "D:"
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 0
+offset_left = 42.0
+offset_top = 2.0
+offset_right = 73.0
+offset_bottom = 33.0
+scale = Vector2(0.75, 0.75)
+text = "X"
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
